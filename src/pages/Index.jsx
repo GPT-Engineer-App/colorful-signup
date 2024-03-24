@@ -28,7 +28,13 @@ const Index = () => {
         fetchTasks(accessToken);
       } else {
         setIsLogin(true);
-        fetchTasks(accessToken);
+        toast({
+          title: "Account created",
+          description: "Your account has been created successfully. Please log in.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       }
     } else {
       const { error } = await response.json();
@@ -77,7 +83,7 @@ const Index = () => {
     fetchTasks(accessToken);
   };
 
-  if (!accessToken) {
+  if (!accessToken || tasks === null) {
     return (
       <Box p={8}>
         <Heading mb={8}>{isLogin ? "Login" : "Sign Up"}</Heading>
