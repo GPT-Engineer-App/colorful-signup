@@ -28,6 +28,7 @@ const Index = () => {
         fetchTasks(accessToken);
       } else {
         setIsLogin(true);
+        fetchTasks(accessToken);
       }
     } else {
       const { error } = await response.json();
