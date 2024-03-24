@@ -22,10 +22,10 @@ const Index = () => {
     });
 
     if (response.ok) {
+      const data = await response.json();
       if (isLogin) {
-        const { accessToken } = await response.json();
-        setAccessToken(accessToken);
-        fetchTasks(accessToken);
+        setAccessToken(data.accessToken);
+        fetchTasks(data.accessToken);
       } else {
         setIsLogin(true);
       }
